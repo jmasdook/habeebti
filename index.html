@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100812">
+<title>Habeebti — A Love Letter From My Love</title>
+<style>
+:root{--night:#100812;--wine:#381326;--rose:#ff8da8;--blush:#ffdce5;--gold:#e9c58b;--cream:#fff6f0;--muted:#c9adb9}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--cream);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+#stars,#petals,#confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+#stars{z-index:0}#petals{z-index:5}#confetti{z-index:30}
+.star{position:absolute;width:2px;height:2px;background:#fff4d9;border-radius:50%;animation:twinkle 3s infinite alternate}
+@keyframes twinkle{to{opacity:.18;transform:scale(.5)}}
+.screen{position:relative;z-index:1}
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:30px 20px;position:relative;background:radial-gradient(ellipse at 50% 44%,#63213b 0%,#29101f 35%,#100812 75%);overflow:hidden}
+.hero:before{content:"";position:absolute;width:min(85vw,650px);aspect-ratio:1;border:1px solid #ffb4c22e;border-radius:50%;box-shadow:0 0 0 35px #ffb4c20a,0 0 0 75px #ffb4c207;animation:halo 9s linear infinite}
+@keyframes halo{to{transform:rotate(360deg)}}
+.hero-content{max-width:850px;position:relative;z-index:2}
+.eyebrow{font:600 10px/1.7 Arial,sans-serif;letter-spacing:.35em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:clamp(3.4rem,11vw,8rem);font-weight:400;line-height:.92;letter-spacing:-.06em;margin:28px 0 20px;text-shadow:0 8px 45px #ff73934a}
+h1 em{font-weight:400;color:var(--rose);display:block}
+.subtitle{font-size:clamp(1.05rem,2.5vw,1.4rem);line-height:1.8;max-width:630px;margin:0 auto 32px;color:#f3dce5}
+.btn{border:1px solid #ffb7c65c;border-radius:999px;padding:14px 23px;background:#ff9bb51a;color:var(--cream);transition:.25s;backdrop-filter:blur(8px)}
+.btn:hover{transform:translateY(-3px);background:#ff9bb52b;box-shadow:0 10px 35px #ff70902b}
+.btn.primary{background:linear-gradient(135deg,#f47c9a,#b53b65);border-color:transparent;color:white;box-shadow:0 10px 35px #e44e792c}
+.btn.dark{background:var(--wine);border-color:#f9c4d433}
+.scroll{font:10px Arial,sans-serif;letter-spacing:.24em;color:#c99baa;margin-top:38px}
+.scroll span{display:block;font-size:22px;margin-top:8px;animation:bob 1.7s infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+section{padding:100px 20px;position:relative}
+.wrap{max-width:1000px;margin:auto}
+.kicker{text-align:center;text-transform:uppercase;letter-spacing:.3em;font:600 10px Arial,sans-serif;color:var(--gold)}
+h2{text-align:center;font-weight:400;font-size:clamp(2.3rem,6vw,4.5rem);line-height:1.08;letter-spacing:-.035em;margin:18px auto}
+.intro{text-align:center;max-width:650px;margin:0 auto 42px;font-size:clamp(1rem,2vw,1.2rem);line-height:1.8;color:var(--muted)}
+.reveal-intro{background:linear-gradient(180deg,#100812,#1b0c18)}
+.curtain{max-width:760px;margin:42px auto 0;border:1px solid #f2c1d22c;border-radius:28px;padding:clamp(28px,6vw,65px);text-align:center;background:linear-gradient(145deg,#ffffff0b,#ffffff02);box-shadow:0 25px 90px #0005;position:relative;overflow:hidden}
+.curtain:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0,#e35a8030,transparent 60%);pointer-events:none}
+.curtain-inner{position:relative}
+.lock-heart{font-size:42px;color:var(--rose);margin-bottom:18px;display:block;animation:heartbeat 1.7s infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}10%{transform:scale(1.13)}20%{transform:scale(1)}30%{transform:scale(1.08)}}
+.curtain h3{font-weight:400;font-size:clamp(1.8rem,4vw,3rem);margin:0 0 15px}
+.curtain p{color:var(--muted);line-height:1.8;font-size:1.05rem}
+#secretLetter{display:none;text-align:left;max-width:650px;margin:32px auto 0;border-top:1px solid #f6c5d22e;padding-top:28px}
+#secretLetter p{font-size:clamp(1rem,2vw,1.15rem);line-height:2;color:#f4dfe6}
+.signature{font-style:italic;font-size:1.5rem!important;color:var(--rose)!important}
+.reasons-section{background:linear-gradient(180deg,#1b0c18,#29101f)}
+.reason-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:40px}
+.reason-card{border:1px solid #f7cad526;background:#ffffff08;border-radius:22px;padding:27px 23px;min-height:205px;transition:transform .25s,border-color .25s}
+.reason-card:hover{transform:translateY(-5px);border-color:#ff8da866}
+.reason-card .emoji{font-size:28px}
+.reason-card h3{font-weight:400;font-size:1.4rem;margin:16px 0 9px}
+.reason-card p{font:14px/1.8 Arial,sans-serif;color:var(--muted);margin:0}
+.interactive{background:radial-gradient(ellipse at 50% 20%,#4b1830,#100812 72%)}
+.reason-box{max-width:700px;margin:35px auto 0;text-align:center;border-radius:28px;padding:clamp(28px,6vw,60px);background:#ffffff08;border:1px solid #f7cad52e;min-height:230px;display:grid;align-content:center;justify-items:center}
+.reason-count{font:10px Arial,sans-serif;text-transform:uppercase;letter-spacing:.24em;color:var(--gold);margin-bottom:18px}
+#reasonText{font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.45;color:#ffe6ed;max-width:570px;transition:opacity .2s}
+.controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:25px}
+.memories{background:#fff5f2;color:#421a2c}
+.memories .kicker{color:#a33b5c}.memories .intro{color:#856775}
+.timeline{max-width:720px;margin:38px auto 0;display:grid;gap:14px}
+.moment{display:flex;gap:17px;align-items:flex-start;border:1px solid #eed4dc;background:white;border-radius:18px;padding:20px}
+.moment .icon{font-size:24px}.moment h3{font-size:1.15rem;font-weight:400;margin:0 0 6px}.moment p{font:14px/1.7 Arial,sans-serif;color:#876b77;margin:0}
+.promise{background:#1a0b17}
+.promise-list{max-width:720px;margin:38px auto 0;display:grid;gap:0}
+.promise-item{display:flex;gap:17px;padding:19px 5px;border-bottom:1px solid #f5cad51b;align-items:flex-start}
+.promise-item .check{color:var(--rose);font-size:19px}.promise-item p{margin:0;font-size:clamp(1rem,2.1vw,1.18rem);line-height:1.7;color:#f1dce4}
+.final{min-height:90svh;display:grid;place-items:center;text-align:center;background:radial-gradient(ellipse at 50% 40%,#6a203f,#2b1020 44%,#100812 80%);padding:90px 20px}
+.final .wrap{width:100%}.final h2{max-width:800px}
+.final-question{font-size:clamp(1.5rem,4vw,2.7rem);line-height:1.45;margin:32px auto;color:#ffe2e9}
+#finalMessage{min-height:70px;max-width:700px;margin:28px auto 0;font-size:clamp(1.05rem,2.5vw,1.3rem);line-height:1.8;color:#ffe2e9}
+footer{position:relative;z-index:1;text-align:center;padding:35px 20px 45px;background:#0a050b;color:#bfa0ae;font:12px/2 Arial,sans-serif;letter-spacing:.04em}
+footer .heart{font-size:24px;color:var(--rose);display:block}
+.petal{position:absolute;top:-30px;animation:fall linear forwards;opacity:.85}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg) translateX(50px);opacity:0}}
+@media(max-width:720px){section{padding:72px 18px}.reason-grid{grid-template-columns:1fr}.reason-card{min-height:0}.hero{min-height:95svh}.moment{padding:17px}.reason-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="stars" aria-hidden="true"></div><div id="petals" aria-hidden="true"></div><div id="confetti" aria-hidden="true"></div>
+<main class="screen">
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">A message from one heart to another</div>
+    <h1>For you,<em>Habeebti.</em></h1>
+    <p class="subtitle">In a world full of people and a lifetime full of moments, there is one person I want to keep choosing, caring for, and loving with all that I am.</p>
+    <button class="btn primary" onclick="document.querySelector('#begin').scrollIntoView({behavior:'smooth'})">There is something I want you to know <span aria-hidden="true"> ♥</span></button>
+    <div class="scroll">YOUR LITTLE LOVE STORY STARTS HERE<span>⌄</span></div>
+  </div>
+</header>
+
+<section class="reveal-intro" id="begin">
+ <div class="wrap">
+  <div class="kicker">Just between us</div>
+  <h2>Some words are meant<br>to be felt, not rushed.</h2>
+  <p class="intro">So take your time, my love. This little world was made for one person only: you.</p>
+  <div class="curtain">
+   <div class="curtain-inner">
+    <span class="lock-heart">♡</span>
+    <h3>A letter I want you to keep</h3>
+    <p>There is a message behind this little door. Open it whenever you're ready.</p>
+    <button class="btn primary" id="openLetter" onclick="openLetter()">Open my heart</button>
+    <div id="secretLetter">
+      <p>My Habeebti,</p>
+      <p>If I could give you one gift, it would be the chance to see yourself through my eyes. You would understand how precious you are to me, how much your presence matters, and why loving you is something I never want to take for granted.</p>
+      <p>I don't need you to be perfect. I want the real you: your thoughts, your dreams, your laughter, your quiet moments, and every part of you that makes you who you are. You deserve to feel heard, respected, safe, appreciated, and loved — not just in beautiful words, but in the little things I do each day.</p>
+      <p>I want to be beside you when life feels easy and when it asks more of us. I want to listen instead of assume, understand instead of judge, and keep learning the ways that make you feel most loved. I want us to keep growing, keep laughing, and keep making ordinary days mean something.</p>
+      <p>Out of all the people in this world, you are the one I want to share my life with. You are not replaceable. You are not just another person in my story. You are my Habeebti — the woman I want to keep choosing, with a full heart and an honest promise to keep trying.</p>
+      <p>If these words make you smile even a little, I hope you remember this: you are so deeply special to me. And I hope I get to show you that again and again, long after this page closes.</p>
+      <p class="signature">Always yours,<br>My love ♥</p>
+      <div style="text-align:center;margin-top:22px"><button class="btn" onclick="sendPetals()">A little shower of love ✨</button></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="reasons-section">
+ <div class="wrap">
+  <div class="kicker">Not just one reason</div>
+  <h2>Why you are my one and only.</h2>
+  <p class="intro">Love is bigger than a list, but here are a few reminders of what I want you to always know.</p>
+  <div class="reason-grid">
+   <article class="reason-card"><div class="emoji">🌙</div><h3>You feel like home</h3><p>Not a place, but a feeling: the comfort of being close to the person my heart wants beside it.</p></article>
+   <article class="reason-card"><div class="emoji">🌹</div><h3>You are irreplaceable</h3><p>There is only one you. I don't want a different person or a different story. I want ours.</p></article>
+   <article class="reason-card"><div class="emoji">✨</div><h3>I admire who you are</h3><p>Your worth isn't measured by what you do for anyone. You deserve care and respect simply because you're you.</p></article>
+   <article class="reason-card"><div class="emoji">🫶</div><h3>Your heart matters</h3><p>I want to listen to you, understand you, and make room for what you feel — even when it's hard.</p></article>
+   <article class="reason-card"><div class="emoji">🌷</div><h3>I want to grow with you</h3><p>Not a perfect love story, but a real one where we learn, forgive, laugh, and try again together.</p></article>
+   <article class="reason-card"><div class="emoji">♾️</div><h3>I keep choosing you</h3><p>Love isn't only a feeling. It's the everyday choice to show up with kindness, honesty, and care.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="interactive">
+ <div class="wrap">
+  <div class="kicker">A little interactive surprise</div>
+  <h2>One tap. One more reason.</h2>
+  <p class="intro">Whenever you need a reminder, tap below. Let these little messages find you, one at a time.</p>
+  <div class="reason-box">
+   <div class="reason-count" id="reasonCount">A note just for you · 01</div>
+   <div id="reasonText" aria-live="polite">Habeebti, you never have to compete for your place in my heart. There is only one you. 💗</div>
+   <div class="controls"><button class="btn primary" onclick="nextReason()">Reveal another reason ♥</button><button class="btn" onclick="sendPetals()">Send me hearts</button></div>
+  </div>
+ </div>
+</section>
+
+<!-- <section class="memories">
+ <div class="wrap">
+  <div class="kicker">Our story is still being written</div>
+  <h2>Room for all our tomorrows.</h2>
+  <p class="intro">I haven't filled this page with made-up memories. The moments that belong here are the real ones — the ones only we know.</p>
+  <div class="timeline">
+   <div class="moment"><div class="icon">💌</div><div><h3>The beginning of our story</h3><p>One day, this space can hold the memory of how our story began — in our own words.</p></div></div>
+   <div class="moment"><div class="icon">📸</div><div><h3>A moment I want to remember</h3><p>Add a favourite photo or a moment that makes you smile whenever you think of it.</p></div></div>
+   <div class="moment"><div class="icon">🌅</div><div><h3>The memories still waiting for us</h3><p>There are still ordinary days to treasure, new places to discover, and little joys to share.</p></div></div>
+  </div>
+ </div>
+</section> -->
+
+<section class="promise">
+ <div class="wrap">
+  <div class="kicker">More than a beautiful page</div>
+  <h2>What I want my love to feel like.</h2>
+  <p class="intro">The sweetest words matter most when our actions carry them into everyday life.</p>
+  <div class="promise-list">
+   <div class="promise-item"><span class="check">♡</span><p>A love where you can be yourself, without pretending to be perfect.</p></div>
+   <div class="promise-item"><span class="check">♡</span><p>A love that listens to your feelings and takes them seriously.</p></div>
+   <div class="promise-item"><span class="check">♡</span><p>A love that celebrates your dreams and supports the person you're becoming.</p></div>
+   <div class="promise-item"><span class="check">♡</span><p>A love that says sorry when it needs to, learns, and makes an effort to do better.</p></div>
+   <div class="promise-item"><span class="check">♡</span><p>A love that doesn't only appear on special occasions — it shows up in little ways, every day.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="final">
+ <div class="wrap">
+  <div class="kicker">And now, one last thing</div>
+  <h2>If I could start this story all over again…</h2>
+  <p class="intro">I would still hope to find you — and get the chance to choose you all over again.</p>
+  <div class="final-question">Habeebti, will you let me keep loving you, today and all the days to come? 💞</div>
+  <div class="controls"><button class="btn primary" onclick="finalAnswer()">Yes, my love 💖</button><button class="btn" onclick="finalAnswer()">A thousand times yes 🥹</button></div>
+  <div id="finalMessage" aria-live="polite"></div>
+  <div class="controls"><button class="btn" onclick="restartJourney()">Read it all again ↺</button></div>
+ </div>
+</section>
+<footer><span class="heart">♥</span>Made with love, from My love to Habeebti.<br>A little page for one very special person.</footer>
+</main>
+<script>
+(function makeStars(){const layer=document.getElementById('stars');for(let i=0;i<100;i++){const s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=Math.random()*4+'s';s.style.animationDuration=(2+Math.random()*4)+'s';layer.appendChild(s)}})();
+function openLetter(){const letter=document.getElementById('secretLetter');letter.style.display='block';document.getElementById('openLetter').textContent='My heart is open ♥';document.getElementById('openLetter').disabled=true;letter.scrollIntoView({behavior:'smooth',block:'nearest'});sendPetals()}
+const reasons=[
+'Habeebti, you never have to compete for your place in my heart. There is only one you. 💗',
+'Your happiness matters to me, and I want to keep finding little ways to bring warmth into your days. ☀️',
+'I love the idea of learning more about you, even after a thousand ordinary days together. 🌷',
+'You deserve to be heard, even when the words are difficult to say. I want to listen. 🤍',
+'I want to celebrate your wins as if they were my own, and stand beside you when things are hard. 🫶',
+'I do not need a perfect life with you. I want a real life where we keep choosing each other. 🌱',
+'You are not a small detail in my life. You are someone I want to make room for, every day. 💌',
+'I want my actions to remind you that your heart is safe with me. 🏡',
+'The world is full of people, but there is only one person who is my Habeebti. ✨',
+'You are loved not for being perfect, but for being wonderfully, entirely yourself. ♾️',
+'I hope I never stop noticing the little things that make you uniquely you. 🌹',
+'My favourite future is one where we keep growing, laughing, learning, and loving together. 💞'
+];let idx=0;
+function nextReason(){idx=(idx+1)%reasons.length;const text=document.getElementById('reasonText');text.style.opacity=0;setTimeout(()=>{text.textContent=reasons[idx];text.style.opacity=1;document.getElementById('reasonCount').textContent='A note just for you · '+String(idx+1).padStart(2,'0')},180)}
+function sendPetals(){const layer=document.getElementById('petals');const icons=['♥','♡','✧','🌸','💗'];for(let i=0;i<38;i++){const p=document.createElement('span');p.className='petal';p.textContent=icons[Math.floor(Math.random()*icons.length)];p.style.left=Math.random()*100+'vw';p.style.fontSize=(12+Math.random()*23)+'px';p.style.color=['#ff8da8','#ffdce5','#e9c58b','#f7a8bd'][Math.floor(Math.random()*4)];p.style.animationDuration=(3+Math.random()*4)+'s';p.style.animationDelay=(Math.random()*.7)+'s';layer.appendChild(p);setTimeout(()=>p.remove(),8000)}}
+function finalAnswer(){document.getElementById('finalMessage').textContent='Then, Habeebti, let me keep showing you — in my words, in my choices, and in the little things I do — how grateful I am that it is you. I love you. Always, My love. ❤️';sendPetals()}
+function restartJourney(){window.scrollTo({top:0,behavior:'smooth'});sendPetals()}
+</script>
+</body>
+</html>
